@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,40 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        ProcessInput();
+
+        KeepPlayerOnScreen();
+    }
+
+    private void KeepPlayerOnScreen()
+    {
+        Vector3 newPosition = transform.position;
+        Vector3 viewportPosition =
+            mainCamera.WorldToViewportPoint(transform.position);
+
+        if (viewportPosition.x > 1)
+        {
+            newPosition.x = -newPosition.x + 0.1f;
+        }
+        else if (viewportPosition.x < 0)
+        {
+            newPosition.x = -newPosition.x - 0.1f;
+        }
+
+        if (viewportPosition.y > 1)
+        {
+            newPosition.y = -newPosition.y + 0.1f;
+        }
+        else if (viewportPosition.y < 0)
+        {
+            newPosition.y = -newPosition.y - 0.1f;
+        }
+
+        transform.position = newPosition;
+    }
+
+    private void ProcessInput()
     {
         if (Touchscreen.current.primaryTouch.press.isPressed)
         {
