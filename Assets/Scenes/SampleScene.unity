@@ -411,8 +411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0bee9d47bc114e77a2980eb3e02d34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMagnitude: 150
+  forceMagnitude: 850
   maxVelocity: 6
+  rotationSpeed: 5
 --- !u!54 &1826844963
 Rigidbody:
   m_ObjectHideFlags: 0
